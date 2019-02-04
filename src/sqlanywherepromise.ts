@@ -8,7 +8,7 @@ export class SQLAnywhereStatement {
   constructor(private _statement: Statement) {
   }
 
-  public exec(args: any[]): Promise<any[] | Error> {
+  public exec(args: any[]): Promise<any[]> {
     return new Promise((resolve, reject) => {
       this._statement.exec(args, (err, rows) => {
         if (err) {
@@ -23,13 +23,13 @@ export class SQLAnywhereStatement {
 export class SQLAnywhereConnection {
   private _conn = createConnection();
 
-  public connect(params: SQLAnywhereConnectionParameters): Promise<Error | undefined> {
+  public connect(params: SQLAnywhereConnectionParameters): Promise<boolean> {
     return new Promise((resolve, reject) => {
       return this._conn.connect(params, (err) => {
         if (err) {
           return reject(err);
         }
-        resolve();
+        resolve(true);
       })
     });
   }
@@ -45,7 +45,7 @@ export class SQLAnywhereConnection {
     });
   }
 
-  public query(sql: string, params?: any[]): Promise<any> {
+  public query(sql: string, params?: any[]): Promise<any[]> {
     return new Promise((resolve, reject) => {
       this._conn.exec(sql, params || [], (err: Error | undefined, rows: any) => {
         if (err) {
@@ -56,35 +56,35 @@ export class SQLAnywhereConnection {
     });
   }
 
-  public commit(): Promise<Error | void> {
+  public commit(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this._conn.commit((err) => {
         if (err) {
           return reject(err);
         }
-        resolve();
+        resolve(true);
       })
     });
   }
 
-  public rollback(): Promise<Error | void> {
+  public rollback(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this._conn.rollback((err) => {
         if (err) {
           reject(err);
         }
-        resolve();
+        resolve(true);
       })
     });
   }
 
-  public close(): Promise<Error | void> {
+  public close(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this._conn.close((err) => {
         if (err) {
           reject(err);
         }
-        resolve();
+        resolve(true);
       })
     })
   }
