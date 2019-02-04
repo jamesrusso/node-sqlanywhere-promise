@@ -2,9 +2,11 @@
   "name": "node-sqlanywhere-promise",
   "version": "1.0.0",
   "description": "A typescript and promise based wrapper around sqlanywhere module.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "node src/index.test.js"
+    "test": "node src/index.test.js",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,8 @@
     "@types/node": "^10.12.19",
     "@types/sqlanywhere": "^1.0.1",
     "sqlanywhere": "^1.0.24"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.1"
   }
 }
