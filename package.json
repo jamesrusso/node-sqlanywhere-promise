@@ -6,8 +6,12 @@
   "scripts": {
     "test": "node src/index.test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamesrusso/node-sqlanywhere-promise"
+  },
   "author": "James A. Russo <jr@halo3.net>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/node": "^10.12.19",
     "@types/sqlanywhere": "^1.0.1",
