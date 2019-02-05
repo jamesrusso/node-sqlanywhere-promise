@@ -1,5 +1,5 @@
 {
-  "name": "sqlanywhere-promise",
+  "name": "@jr219/sqlanywhere-promise",
   "version": "0.0.1",
   "description": "a typescript and promise based wrapper around sqlanywhere module.",
   "main": "dist/index.js",
